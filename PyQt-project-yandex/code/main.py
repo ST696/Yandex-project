@@ -7,7 +7,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 class MyWidget(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('venv/file_ui/untitled.ui', self)  # Загружаем дизайн
+        uic.loadUi('file_ui/untitled.ui', self)  # Загружаем дизайн
         # Обратите внимание: имя элемента такое же как в QTDesigner
 
     def run(self):
