@@ -9,10 +9,18 @@ class MyWidget(QMainWindow):
         super().__init__()
         uic.loadUi('file_ui/untitled.ui', self)  # Загружаем дизайн
         # Обратите внимание: имя элемента такое же как в QTDesigner
+        self.button_save.clicked.connect(self.save_table)
+        self.button_clear.clicked.connect(self.clear_table)
+        self.button_start.clicked.connect(self.start)
 
-    def run(self):
-        self.label.setText("OK")
-        # Имя элемента совпадает с objectName в QTDesigner
+    def start(self):
+        print("start OK")
+
+    def clear_table(self):
+        print("clear table OK")
+
+    def save_table(self):
+        print("save OK")
 
 
 if __name__ == '__main__':
