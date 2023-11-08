@@ -29,6 +29,6 @@ class operationDatabase():
 
 def main():
     oper = operationDatabase
-
+    oper.input_new_data_in_using_db()
 if __name__ == "__main__":
     main()

@@ -21,7 +21,17 @@ def get_data_with_raquests(url):
 
 
 def main():
-    get_data_with_raquests("https://www.banki.ru/products/deposits/?source=menubloks_deposits")
+    #get_data_with_raquests("https://www.banki.ru/products/deposits/?source=menubloks_deposits")
+    count = set()
+    with open("data_bank.txt", "r") as file:
+        for bank in file.readlines():
+            bank = bank.replace("[", '').replace(']', '').split("'")
+            bank = list(filter(lambda x: x != "," and x != "" and x != ", ", bank))
+            bank_name = bank[0]
+            print(bank_name)
+            count.add(bank_name)
+        print(count)
+
 
 
 if __name__ == "__main__":
