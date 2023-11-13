@@ -69,7 +69,7 @@
     </item>
     <item>
      <property name="text">
-      <string>ежеедельно</string>
+      <string>еженедельно</string>
      </property>
     </item>
     <item>
@@ -80,11 +80,6 @@
     <item>
      <property name="text">
       <string>ежеквартально</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>раз в полгода</string>
      </property>
     </item>
     <item>
@@ -110,11 +105,6 @@
     <item>
      <property name="text">
       <string>месяцев</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>недель</string>
      </property>
     </item>
     <item>
@@ -208,6 +198,31 @@
        <height>78</height>
       </rect>
      </property>
+     <widget class="QComboBox" name="capitalization">
+      <property name="geometry">
+       <rect>
+        <x>308</x>
+        <y>40</y>
+        <width>121</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>Ежемесячная</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Ежеквартальная</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Ежегодная</string>
+       </property>
+      </item>
+     </widget>
     </widget>
    </widget>
    <widget class="QLabel" name="label">
@@ -220,7 +235,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Сумма вклада</string>
+     <string>Сумма вклада:</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
@@ -228,12 +243,12 @@
      <rect>
       <x>170</x>
       <y>0</y>
-      <width>111</width>
+      <width>131</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>Процентная ставка</string>
+     <string>Процентная ставка:</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
@@ -246,7 +261,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Сумма попоплнения</string>
+     <string>Сумма попоплнения:</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
@@ -259,20 +274,43 @@
      </rect>
     </property>
     <property name="text">
-     <string>Срок вклада</string>
+     <string>Срок вклада:</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="button_start_2">
+   <widget class="QPushButton" name="button_choose_deposite">
     <property name="geometry">
      <rect>
-      <x>320</x>
+      <x>490</x>
       <y>150</y>
-      <width>451</width>
-      <height>31</height>
+      <width>291</width>
+      <height>23</height>
      </rect>
     </property>
     <property name="text">
      <string>Выбрать существующий вклад</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="result">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>160</y>
+      <width>113</width>
+      <height>23</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>160</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Результат</string>
     </property>
    </widget>
   </widget>
@@ -282,7 +320,7 @@
      <x>0</x>
      <y>0</y>
      <width>836</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>
