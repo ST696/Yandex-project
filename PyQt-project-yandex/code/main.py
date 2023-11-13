@@ -27,9 +27,9 @@ class MyWidget(QMainWindow):
             dialog.setFileMode(QFileDialog.AnyFile)
             # create table
             
-            self.rows_table = 10
-            self.COLUMNS_TABLES = 10
-            self.table_res = QTableWidget(10, 4, self)
+            self.COLUMNS_TABLES = 4
+            self.table_res = QTableWidget(self)
+            self.table_res.setColumnCount(4)
             self.table_res.move(25, 220)
             self.table_res.resize(700, 470)
         except Exception as ex:
@@ -65,6 +65,7 @@ class MyWidget(QMainWindow):
 
             with open("time_file/time_res.txt", "r") as time_file:
                 res = time_file.read().split('\n')
+                self.table_res.setRowCount(len(res))
                 newItem1 = QTableWidgetItem(res[0].split(";")[0].split(':')[0])
                 newItem2 = QTableWidgetItem(res[0].split(";")[1].split(':')[0])
                 newItem3 = QTableWidgetItem(res[0].split(";")[2].split(':')[0])
@@ -88,12 +89,14 @@ class MyWidget(QMainWindow):
         print("start OK")
 
     def clear_table(self):
-        row_count = 10
+        row_count = self.table_res.rowCount()
         for row in range(row_count):
             for column in range(self.COLUMNS_TABLES):
                 newItem = QTableWidgetItem("")
                 self.table_res.setItem(row, column, newItem)
         print("clear table OK")
+        #!!!!!!!!!!!!!!!!!!!!
+        self.table_res.clear()
 
     def save_table(self):
         print("save OK")
