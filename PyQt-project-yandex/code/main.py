@@ -1,23 +1,27 @@
 import sys
 from deposit_calculator import result
 from PyQt5 import uic
-from PyQt5.QtWidgets import QFileDialog, QWidget, QPushButton
-from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidget,QTableWidgetItem
+from PyQt5.QtWidgets import QFileDialog
+from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidget,QTableWidgetItem, QLabel
 import banks_window, filling_in_db, get_data
-
+from PyQt5.QtGui import QPixmap
 
 class main_window(QMainWindow):
     def __init__(self):
         try:
             super().__init__()
-            
-            uic.loadUi('file_ui/untitled_2.ui', self)
+            image_path = "images/image.png"
+            pixmap = QPixmap(image_path)
+            self.resize(pixmap.width(), pixmap.height())
+            self.setFixedSize(800, 700)
+            uic.loadUi('file_ui/untitled.ui', self)
             self.button_save.clicked.connect(self.save_table)
             self.button_clear.clicked.connect(self.clear_table)
             self.button_start.clicked.connect(self.start)
             self.button_choose_deposite.clicked.connect(self.choose_deposite)
-            self.button_update.clicked.connect(self.update)
-
+            self.button_update.clicked.connect(self.update_db)
+            self.button_delete.clicked.connect(self.delete)
+            self.background = QLabel(self)
             self.COLUMNS_TABLES = 4
 
 
@@ -30,13 +34,23 @@ class main_window(QMainWindow):
             self.table_res.resize(700, 470)
         except Exception as ex:
             print(ex)
-    
-    def updete():
-        pars = get_data.get_data_with_raquests()
+
+    def delete(self):
         fil = filling_in_db.operationDatabase
         fil.delete_db()
-        fil.input_new_data_in_using_db()
+        print("delete_OK")
 
+
+    def update_db(self):
+        print("START")
+        try:
+            next = get_data.get_data_with_raquests()
+            if next:
+                fil = filling_in_db.operationDatabase
+                fil.input_new_data_in_using_db()
+                print('DONE')
+        except:
+            print("ERROR")
 
     def choose_deposite(self):
         self.new_wiget = banks_window.Contacts()

@@ -6,287 +6,312 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>836</width>
-    <height>697</height>
+    <width>802</width>
+    <height>721</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="button_start">
+   <widget class="QLabel" name="background">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>90</y>
-      <width>161</width>
-      <height>51</height>
+      <x>-50</x>
+      <y>-70</y>
+      <width>901</width>
+      <height>951</height>
      </rect>
     </property>
     <property name="text">
-     <string>Расчет</string>
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../images/image.png</pixmap>
     </property>
    </widget>
-   <widget class="QPushButton" name="button_clear">
+   <widget class="QWidget" name="verticalLayoutWidget_7">
     <property name="geometry">
      <rect>
-      <x>460</x>
-      <y>90</y>
-      <width>161</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Очистить</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="button_save">
-    <property name="geometry">
-     <rect>
-      <x>630</x>
-      <y>90</y>
-      <width>161</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Cохранить</string>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="replenishment_period">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>120</y>
-      <width>111</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <item>
-     <property name="text">
-      <string>ежедневно</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>ежеедельно</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>ежемесячно</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>ежеквартально</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>раз в полгода</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>ежегодно</string>
-     </property>
-    </item>
-   </widget>
-   <widget class="QComboBox" name="date_tip_deposit">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
+      <x>150</x>
       <y>70</y>
-      <width>111</width>
-      <height>23</height>
+      <width>131</width>
+      <height>111</height>
      </rect>
     </property>
-    <item>
-     <property name="text">
-      <string>лет</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>месяцев</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>недель</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>дней</string>
-     </property>
-    </item>
+    <layout class="QVBoxLayout" name="verticalLayout_8">
+     <item>
+      <widget class="QComboBox" name="date_tip_deposit">
+       <item>
+        <property name="text">
+         <string>лет</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>месяцев</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>дней</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="replenishment_period">
+       <item>
+        <property name="text">
+         <string>ежедневно</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>ежемесячно</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>ежеквартально</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>ежегодно</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
    </widget>
-   <widget class="QLineEdit" name="deposite_date">
+   <widget class="QWidget" name="verticalLayoutWidget_3">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>70</y>
-      <width>141</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="inputMask">
-     <string/>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="sum_replenishment">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>120</y>
-      <width>141</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="inputMask">
-     <string/>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="sum_start_deposit">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>141</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="inputMask">
-     <string/>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="iterest_rate">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>20</y>
-      <width>121</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="inputMask">
-     <string/>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QScrollArea" name="scrollArea">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>0</y>
-      <width>451</width>
+      <x>289</x>
+      <y>90</y>
+      <width>131</width>
       <height>80</height>
      </rect>
     </property>
-    <property name="widgetResizable">
-     <bool>true</bool>
-    </property>
-    <widget class="QWidget" name="scrollAreaWidgetContents">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>449</width>
-       <height>78</height>
-      </rect>
-     </property>
-    </widget>
+    <layout class="QVBoxLayout" name="verticalLayout_4">
+     <item>
+      <widget class="QPushButton" name="button_start">
+       <property name="text">
+        <string>Расчет</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="button_delete">
+       <property name="text">
+        <string>удалить базу</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QWidget" name="verticalLayoutWidget_4">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>0</y>
-      <width>141</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Сумма вклада</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>0</y>
-      <width>111</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Процентная ставка</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>100</y>
+      <x>430</x>
+      <y>90</y>
       <width>151</width>
-      <height>16</height>
+      <height>81</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Сумма попоплнения</string>
-    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_5">
+     <item>
+      <widget class="QPushButton" name="button_clear">
+       <property name="text">
+        <string>Очистить</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="button_update">
+       <property name="text">
+        <string>Обновить базу</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
-   <widget class="QLabel" name="label_4">
+   <widget class="QWidget" name="verticalLayoutWidget_5">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>50</y>
+      <x>590</x>
+      <y>90</y>
+      <width>207</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_6">
+     <item>
+      <widget class="QPushButton" name="button_save">
+       <property name="text">
+        <string>Cохранить</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="button_choose_deposite">
+       <property name="text">
+        <string>Выбрать существующий вклад</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_6">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>30</y>
+      <width>261</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_7">
+     <item>
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Капитализация:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="capitalization">
+       <item>
+        <property name="text">
+         <string>Ежемесячная</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Ежедневная</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Ежеквартальная</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Ежегодная</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>10</y>
+      <width>160</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Процентная ставка:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="iterest_rate">
+       <property name="inputMask">
+        <string/>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>10</y>
       <width>141</width>
-      <height>16</height>
+      <height>151</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Срок вклада</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="button_start_2">
-    <property name="geometry">
-     <rect>
-      <x>500</x>
-      <y>150</y>
-      <width>271</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Выбрать существующий вклад</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="button_update">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>150</y>
-      <width>141</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Обновить базу</string>
-    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string>Сумма вклада:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="sum_start_deposit">
+       <property name="inputMask">
+        <string/>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Срок вклада:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="deposite_date">
+       <property name="inputMask">
+        <string/>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Сумма попоплнения:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="sum_replenishment">
+       <property name="inputMask">
+        <string/>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -294,7 +319,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>836</width>
+     <width>802</width>
      <height>20</height>
     </rect>
    </property>
