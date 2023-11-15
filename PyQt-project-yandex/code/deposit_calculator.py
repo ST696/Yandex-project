@@ -10,16 +10,7 @@ def result(variables):
     tip_replenishment = variables["tip_replenishment"]
     sum_replenishment = variables["sum_replenishment"]
 
-    """
-    A = P * (1 + r/n)**(n*t)
-
-
-    A – общая сумма денег (тело вклада + проценты), которую вы получите после того, как срок вклада закончится.
-    P – стартовая сумма, которую вы кладете на счет вклада.
-    r – процентная ставка по вкладу.
-    n – количество расчетов прибыль в году, для ежедневной капитализации – 365 или 366, для ежемесячной – 12 и так далее.
-    t – количество лет вклада. 6 месяцев – это 0.5 года.
-    """
+    
     term = {
         "лет": term_deposit * 365,
         "месяцев": term_deposit * 30,
@@ -30,91 +21,177 @@ def result(variables):
         iteration = 0
         with open("time_file/time_res.txt", "w") as time_file:
             if capitalization == "Ежемесячная":
-                for mounth in range(1, days//31 + 1):
-                    S = start_sum * (1 + (prosent/100)/12)**mounth
-                    iteration += 1
-                    time_file.write(f"период:{iteration};всего:{round(S, 2)};прибыль:{round(start_sum * ( 1 + (prosent/100)/12)**mounth - start_sum, 2)};пополнение:{sum_replenishment}\n")
 
-                    
-                """
-                mounth – количество проведенных операций перевода процентов в тело вклада на протяжении полного срока действия договора (то есть месяцев вклада);
+                if tip_replenishment == "ежедневно":
+                    sum_replenishment *= 31
+                    for mounth in range(1, days//31 + 1):
+                        S = start_sum * (1 + (prosent/100)/12)**mounth
+                        iteration += 1
+                        time_file.write(f"период:{iteration};всего:{round(S, 2)};прибыль:{round(start_sum * ( 1 + (prosent/100)/12)**mounth - start_sum, 2)};пополнение:{sum_replenishment}\n")
+                        start_sum += sum_replenishment
 
-                S – сумма вклада на дату окончания действия депозита, которую вкладчик получит на руки;
+                elif tip_replenishment == "ежемесячно":
+                    for mounth in range(1, days//31 + 1):
+                        S = start_sum * (1 + (prosent/100)/12)**mounth
+                        iteration += 1
+                        time_file.write(f"период:{iteration};всего:{round(S, 2)};прибыль:{round(start_sum * ( 1 + (prosent/100)/12)**mounth - start_sum, 2)};пополнение:{sum_replenishment}\n")
+                        start_sum += sum_replenishment
 
-                start_sum – изначально внесенная сумма на депозит с возможностью капитализации;
+                elif tip_replenishment == "ежеквартально":
+                    for mounth in range(1, days//31 + 1):
+                        add_sum = sum_replenishment
+                        S = start_sum * (1 + (prosent/100)/12)**mounth
+                        iteration += 1
+                        if mounth % 4 == 0:
+                            time_file.write(f"период:{iteration};всего:{round(S, 2)};прибыль:{round(start_sum * ( 1 + (prosent/100)/12)**mounth - start_sum, 2)};пополнение:{add_sum}\n")
+                            start_sum += add_sum
+                        else:
+                            add_sum = 0
+                            time_file.write(f"период:{iteration};всего:{round(S, 2)};прибыль:{round(start_sum * ( 1 + (prosent/100)/12)**mounth - start_sum, 2)};пополнение:{add_sum}\n")
 
-                prosent - % ставка (годовая).
-                """
+                elif tip_replenishment == "ежегодно":
+                    for mounth in range(1, days//31 + 1):
+                        add_sum = sum_replenishment
+                        S = start_sum * (1 + (prosent/100)/12)**mounth
+                        iteration += 1
+                        if mounth % 12 == 0:
+                            time_file.write(f"период:{iteration};всего:{round(S, 2)};прибыль:{round(start_sum * ( 1 + (prosent/100)/12)**mounth - start_sum, 2)};пополнение:{add_sum}\n")
+                            start_sum += add_sum
+                        else:
+                            add_sum = 0
+                            time_file.write(f"период:{iteration};всего:{round(S, 2)};прибыль:{round(start_sum * ( 1 + (prosent/100)/12)**mounth - start_sum, 2)};пополнение:{add_sum}\n")
+
+
                 print(f"итого: {round(S, 2)}")
                 return(round(S, 2))
-
             elif capitalization == "Ежеквартальная":
-                for quarter in range(1, days//93 + 1):
-                    S=start_sum * (1+ (prosent/100)/4)**quarter
-                    iteration += 1
-                    time_file.write(f"период:{iteration};всего:{round(S, 2)};прибыль:{round(start_sum * ( 1 + (prosent/100)/12)**quarter - start_sum, 2)};пополнение:{sum_replenishment}\n")
+                if tip_replenishment == "ежедневно":
+                    sum_replenishment *= 93
+                    for mounth in range(1, days//31 + 1):
+                        S = start_sum * (1 + (prosent/100)/12)**mounth
+                        iteration += 1
+                        time_file.write(f"период:{iteration};всего:{round(S, 2)};прибыль:{round(start_sum * ( 1 + (prosent/100)/12)**mounth - start_sum, 2)};пополнение:{sum_replenishment}\n")
+                        start_sum += sum_replenishment
 
-                """
-                S - получаемый в конце срока доход (тело вклада + проценты);
+                elif tip_replenishment == "ежемесячно":
+                    sum_replenishment *= 4
+                    for mounth in range(1, days//31 + 1):
+                        S = start_sum * (1 + (prosent/100)/12)**mounth
+                        iteration += 1
+                        time_file.write(f"период:{iteration};всего:{round(S, 2)};прибыль:{round(start_sum * ( 1 + (prosent/100)/12)**mounth - start_sum, 2)};пополнение:{sum_replenishment}\n")
+                        start_sum += sum_replenishment
 
-                start_sum – изначально размещенная сумма на депозите;
+                elif tip_replenishment == "ежеквартально":
+                    for mounth in range(1, days//31 + 1):
+                        S = start_sum * (1 + (prosent/100)/12)**mounth
+                        iteration += 1
+                        time_file.write(f"период:{iteration};всего:{round(S, 2)};прибыль:{round(start_sum * ( 1 + (prosent/100)/12)**mounth - start_sum, 2)};пополнение:{sum_replenishment}\n")
+                        start_sum += sum_replenishment
 
-                prosent - годовой %;
+                elif tip_replenishment == "ежегодно":
+                    for mounth in range(1, days//31 + 1):
+                        add_sum = sum_replenishment
+                        S = start_sum * (1 + (prosent/100)/12)**mounth
+                        iteration += 1
+                        if mounth % 4 == 0:
+                            time_file.write(f"период:{iteration};всего:{round(S, 2)};прибыль:{round(start_sum * ( 1 + (prosent/100)/12)**mounth - start_sum, 2)};пополнение:{add_sum}\n")
+                            start_sum += add_sum
+                        else:
+                            add_sum = 0
+                            time_file.write(f"период:{iteration};всего:{round(S, 2)};прибыль:{round(start_sum * ( 1 + (prosent/100)/12)**mounth - start_sum, 2)};пополнение:{add_sum}\n")
 
-                quarter – количество кварталов, на протяжении которых открыт вклад.
-                """
+
                 print(f"итого: {round(S, 2)}")
                 return(round(S, 2))
-
-
-
             elif capitalization == "Ежегодная":
-                for year in range(1, days//365 + 1):
-                    S=start_sum * (1+ (prosent/100))**year
-                    iteration += 1
-                    time_file.write(f"период:{iteration};всего:{round(S, 2)};прибыль:{round(start_sum * ( 1 + (prosent/100)/12)**year - start_sum, 2)};пополнение:{sum_replenishment}\n")
+                if tip_replenishment == "ежедневно":
+                    sum_replenishment *= 365
+                    for mounth in range(1, days//31 + 1):
+                        S = start_sum * (1 + (prosent/100)/12)**mounth
+                        iteration += 1
+                        time_file.write(f"период:{iteration};всего:{round(S, 2)};прибыль:{round(start_sum * ( 1 + (prosent/100)/12)**mounth - start_sum, 2)};пополнение:{sum_replenishment}\n")
+                        start_sum += sum_replenishment
 
-                """
-                S - получаемый в конце срока доход (тело вклада + проценты);
+                elif tip_replenishment == "ежемесячно":
+                    sum_replenishment *= 12
+                    for mounth in range(1, days//31 + 1):
+                        S = start_sum * (1 + (prosent/100)/12)**mounth
+                        iteration += 1
+                        time_file.write(f"период:{iteration};всего:{round(S, 2)};прибыль:{round(start_sum * ( 1 + (prosent/100)/12)**mounth - start_sum, 2)};пополнение:{sum_replenishment}\n")
+                        start_sum += sum_replenishment
 
-                start_sum – изначально размещенная сумма на депозите;
+                elif tip_replenishment == "ежеквартально":
+                        start_sum *= 4
+                        for mounth in range(1, days//31 + 1):
+                            S = start_sum * (1 + (prosent/100)/4)**mounth
+                            iteration += 1
+                            time_file.write(f"период:{iteration};всего:{round(S, 2)};прибыль:{round(start_sum * ( 1 + (prosent/100)/12)**mounth - start_sum, 2)};пополнение:{sum_replenishment}\n")
+                            start_sum += sum_replenishment
 
-                prosent - годовой %;
-
-                quarter – количество кварталов, на протяжении которых открыт вклад.
-                """
+                elif tip_replenishment == "ежегодно":
+                    for mounth in range(1, days//31 + 1):
+                        S = start_sum * (1 + (prosent/100)/12)**mounth
+                        iteration += 1
+                        time_file.write(f"период:{iteration};всего:{round(S, 2)};прибыль:{round(start_sum * ( 1 + (prosent/100)/12)**mounth - start_sum, 2)};пополнение:{sum_replenishment}\n")
+                        start_sum += sum_replenishment
                 print(f"итого: {round(S, 2)}")
                 return(round(S, 2))
-
-
             elif capitalization == "Ежедневная":
-                for day in range(1, days + 1):
-                    S = start_sum * (1 + (prosent/100) / 365)**day
-                    iteration += 1
-                    time_file.write(f"период:{iteration};всего:{round(S, 2)};прибыль:{round(start_sum * ( 1 + (prosent/100)/12)**day - start_sum, 2)};пополнение:{sum_replenishment}\n")
+                if tip_replenishment == "ежедневно":
+                    for mounth in range(1, days//31 + 1):
+                        S = start_sum * (1 + (prosent/100)/12)**mounth
+                        iteration += 1
+                        time_file.write(f"период:{iteration};всего:{round(S, 2)};прибыль:{round(start_sum * ( 1 + (prosent/100)/12)**mounth - start_sum, 2)};пополнение:{sum_replenishment}\n")
+                        start_sum += sum_replenishment
 
-                    """
-                    S – суммарный доход (тело вклада + проценты);
+                elif tip_replenishment == "ежемесячно":
+                    for mounth in range(1, days//31 + 1):
+                        add_sum = sum_replenishment
+                        S = start_sum * (1 + (prosent/100)/12)**mounth
+                        iteration += 1
+                        if mounth % 31 == 0:
+                            time_file.write(f"период:{iteration};всего:{round(S, 2)};прибыль:{round(start_sum * ( 1 + (prosent/100)/12)**mounth - start_sum, 2)};пополнение:{add_sum}\n")
+                            start_sum += add_sum
+                        else:
+                            add_sum = 0
+                            time_file.write(f"период:{iteration};всего:{round(S, 2)};прибыль:{round(start_sum * ( 1 + (prosent/100)/12)**mounth - start_sum, 2)};пополнение:{add_sum}\n")
 
-                    start_sum – внесенная при заключении договора сумма;
 
-                    prosent – годовая % ставка;
+                elif tip_replenishment == "ежеквартально":
+                        for mounth in range(1, days//31 + 1):
+                            add_sum = sum_replenishment
+                            S = start_sum * (1 + (prosent/100)/12)**mounth
+                            iteration += 1
+                            if mounth % 93 == 0:
+                                time_file.write(f"период:{iteration};всего:{round(S, 2)};прибыль:{round(start_sum * ( 1 + (prosent/100)/12)**mounth - start_sum, 2)};пополнение:{add_sum}\n")
+                                start_sum += add_sum
+                            else:
+                                add_sum = 0
+                                time_file.write(f"период:{iteration};всего:{round(S, 2)};прибыль:{round(start_sum * ( 1 + (prosent/100)/12)**mounth - start_sum, 2)};пополнение:{add_sum}\n")
 
-                    К – 365 или 366 дней;
 
-                    day – кол-во дней, на которые открыт депозит.
-                    """   
+                elif tip_replenishment == "ежегодно":
+                    for mounth in range(1, days//31 + 1):
+                        add_sum = sum_replenishment
+                        S = start_sum * (1 + (prosent/100)/12)**mounth
+                        iteration += 1
+                        if mounth % 365 == 0:
+                            time_file.write(f"период:{iteration};всего:{round(S, 2)};прибыль:{round(start_sum * ( 1 + (prosent/100)/12)**mounth - start_sum, 2)};пополнение:{add_sum}\n")
+                            start_sum += add_sum
+                        else:
+                            add_sum = 0
+                            time_file.write(f"период:{iteration};всего:{round(S, 2)};прибыль:{round(start_sum * ( 1 + (prosent/100)/12)**mounth - start_sum, 2)};пополнение:{add_sum}\n")
+
+
+                
+            
     except Exception as ex:
-
         print(ex)
-    else:
-        raise
 
-delta = datetime.timedelta
 variables = {
     "sum_start_deposit": 100000,
     "iterest_rate": 2,
-    "capitalization": "Ежемесячная",
+    "capitalization": "Ежегодная",
     "data_tip": "лет",
     "sum_replenishment": 10000,
     "tip_replenishment": "ежемесячно",
@@ -122,3 +199,15 @@ variables = {
 }
 if __name__ == "__main__":
      result(variables)
+
+
+     """
+    A = P * (1 + r/n)**(n*t)
+
+
+    A – общая сумма денег (тело вклада + проценты), которую вы получите после того, как срок вклада закончится.
+    P – стартовая сумма, которую вы кладете на счет вклада.
+    r – процентная ставка по вкладу.
+    n – количество расчетов прибыль в году, для ежедневной капитализации – 365 или 366, для ежемесячной – 12 и так далее.
+    t – количество лет вклада. 6 месяцев – это 0.5 года.
+    """
